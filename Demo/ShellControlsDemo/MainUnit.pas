@@ -3,11 +3,12 @@ unit MainUnit;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls,
-  Vcl.ComCtrls, Vcl.Shell.ShellCtrls, Vcl.ExtCtrls, System.Actions,
+  WinApi.Windows, WinApi.Messages, System.SysUtils,
+  System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms,
+  Vcl.Dialogs, Vcl.StdCtrls, Vcl.ComCtrls,
+  Vcl.Shell.ShellCtrls, Vcl.ExtCtrls, System.Actions,
   Vcl.ActnList, Vcl.Buttons, Vcl.ToolWin, Vcl.ImgList,
-  Vcl.Menus;
+  Vcl.Menus, System.ImageList;
 
 type
   TMainForm = class(TForm)

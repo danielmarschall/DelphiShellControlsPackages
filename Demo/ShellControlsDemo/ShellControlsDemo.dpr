@@ -1,7 +1,7 @@
 program ShellControlsDemo;
 
 uses
-  Forms,
+  Vcl.Forms,
   MainUnit in 'MainUnit.pas' {MainForm},
   Vcl.Themes,
   Vcl.Styles,

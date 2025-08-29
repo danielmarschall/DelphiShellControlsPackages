@@ -1,16 +1,17 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{B7B9F3DB-34EA-4EE8-8A34-D7F746257CD7}</ProjectGuid>
-        <MainSource>vclshlctrls.dpk</MainSource>
+        <ProjectGuid>{096AAED8-701D-4CD5-AE9F-7E87BFFB2D21}</ProjectGuid>
+        <MainSource>dclshlctrls.dpk</MainSource>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
-        <ProjectVersion>19.5</ProjectVersion>
+        <ProjectVersion>20.3</ProjectVersion>
         <Config Condition="'$(Config)'==''">Release</Config>
         <Base>True</Base>
         <AppType>Package</AppType>
         <FrameworkType>VCL</FrameworkType>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>3</TargetedPlatforms>
+        <ProjectName Condition="'$(ProjectName)'==''">dclshlctrls</ProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -25,6 +26,11 @@
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64x' and '$(Base)'=='true') or '$(Base_Win64x)'!=''">
+        <Base_Win64x>true</Base_Win64x>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
         <Cfg_1>true</Cfg_1>
         <CfgParent>Base</CfgParent>
@@ -36,26 +42,26 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <DCC_SYMBOL_PLATFORM>false</DCC_SYMBOL_PLATFORM>
         <DCC_UNIT_PLATFORM>false</DCC_UNIT_PLATFORM>
+        <DCC_SYMBOL_PLATFORM>false</DCC_SYMBOL_PLATFORM>
         <VerInfo_Build>24210</VerInfo_Build>
         <VerInfo_DLL>true</VerInfo_DLL>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Keys>CompanyName=Embarcadero Technologies, Inc.;FileDescription=Shell Controls;FileVersion=15.0.3513.24210;InternalName=VCLSHLCTRLS150;LegalCopyright=Copyright © 2000-2002 Embarcadero Technologies, Inc.;LegalTrademarks=;OriginalFilename=VCLSHLCTRLS150.BPL;ProductName=Delphi;ProductVersion=15.0;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=Embarcadero Technologies, Inc.;FileDescription=CodeGear Win32 Shell Controls;FileVersion=15.0.3513.24210;InternalName=DCLSHLCTRLS150;LegalCopyright=Copyright © 2000-2002 Embarcadero Technologies, Inc.;LegalTrademarks=;OriginalFilename=DCLSHLCTRLS150.BPL;ProductName=Delphi;ProductVersion=14.0;Comments=</VerInfo_Keys>
         <VerInfo_Release>3513</VerInfo_Release>
-        <DCC_Namespace>Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
+        <DCC_Namespace>Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;WinApi;$(DCC_Namespace)</DCC_Namespace>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_MajorVer>15</VerInfo_MajorVer>
         <DCC_ImageBase>00400000</DCC_ImageBase>
-        <RuntimeOnlyPackage>true</RuntimeOnlyPackage>
+        <DesignOnlyPackage>true</DesignOnlyPackage>
         <DCC_Optimize>false</DCC_Optimize>
-        <DCC_Description>VCL Shell Controls</DCC_Description>
+        <DCC_Description>Shell Control Property and Component Editors</DCC_Description>
         <DCC_OutputNeverBuildDcps>true</DCC_OutputNeverBuildDcps>
         <GenDll>true</GenDll>
         <GenPackage>true</GenPackage>
         <DllSuffix>$(Auto)</DllSuffix>
-        <SanitizedProjectName>vclshlctrls</SanitizedProjectName>
-        <DCC_DcuOutput>..\..\Lib\Delphi11\$(Platform)\$(Config)</DCC_DcuOutput>
+        <SanitizedProjectName>dclshlctrls</SanitizedProjectName>
+        <DCC_DcuOutput>..\..\Lib\Delphi13\$(Platform)\$(Config)</DCC_DcuOutput>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <Version>7.0</Version>
@@ -74,10 +80,13 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="rtl.dcp"/>
-        <DCCReference Include="Vcl.dcp"/>
-        <DCCReference Include="Vcl.Shell.ShellCtrls.pas"/>
-        <DCCReference Include="Vcl.Shell.ShellConsts.pas"/>
+        <DCCReference Include="..\..\Source\dclshlctrls.dcr"/>
+        <DCCReference Include="designide.dcp"/>
+        <DCCReference Include="vclshlctrls.dcp"/>
+        <DCCReference Include="..\..\Source\RootEdit.pas">
+            <Form>RootPathEditDlg</Form>
+        </DCCReference>
+        <DCCReference Include="..\ShellReg.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -121,16 +130,16 @@
                     <VersionInfoKeys Name="CompanyName">Embarcadero Technologies, Inc.</VersionInfoKeys>
                     <VersionInfoKeys Name="FileDescription">CodeGear Win32 Shell Controls</VersionInfoKeys>
                     <VersionInfoKeys Name="FileVersion">15.0.3513.24210</VersionInfoKeys>
-                    <VersionInfoKeys Name="InternalName">VCLSHLCTRLS150</VersionInfoKeys>
+                    <VersionInfoKeys Name="InternalName">DCLSHLCTRLS150</VersionInfoKeys>
                     <VersionInfoKeys Name="LegalCopyright">Copyright © 2000-2002 Embarcadero Technologies, Inc.</VersionInfoKeys>
                     <VersionInfoKeys Name="LegalTrademarks"/>
-                    <VersionInfoKeys Name="OriginalFilename">VCLSHLCTRLS150.BPL</VersionInfoKeys>
+                    <VersionInfoKeys Name="OriginalFilename">DCLSHLCTRLS150.BPL</VersionInfoKeys>
                     <VersionInfoKeys Name="ProductName">Delphi</VersionInfoKeys>
-                    <VersionInfoKeys Name="ProductVersion">15.0</VersionInfoKeys>
+                    <VersionInfoKeys Name="ProductVersion">14.0</VersionInfoKeys>
                     <VersionInfoKeys Name="Comments"/>
                 </VersionInfoKeys>
                 <Source>
-                    <Source Name="MainSource">vclshlctrls.dpk</Source>
+                    <Source Name="MainSource">dclshlctrls.dpk</Source>
                 </Source>
                 <Excluded_Packages/>
                 <WelcomePageFile Path="..\..\ReadMe.htm"/>
@@ -139,6 +148,7 @@
             <Platforms>
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">True</Platform>
+                <Platform value="Win64x">False</Platform>
             </Platforms>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
